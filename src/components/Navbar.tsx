@@ -6,6 +6,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { useScrollDirection } from "@/hooks/useScrollDirection";
 import { motion, AnimatePresence } from "framer-motion";
 import PayoutSupportBanner from "@/components/PayoutSupportBanner";
+import Logo from "@/components/ui/Logo";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,6 +27,7 @@ const navLinks = [
   { to: "/reviews", label: "Reviews" },
   { to: "/drama-tracker", label: "Drama Tracker" },
   { to: "/compare", label: "Compare" },
+  { to: "/table-review", label: "Table Review" },
 ];
 
 const Navbar = ({ isAdminMode, setIsAdminMode }: NavbarProps) => {
@@ -45,84 +47,71 @@ const Navbar = ({ isAdminMode, setIsAdminMode }: NavbarProps) => {
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
-      {/* Banner ABOVE navbar */}
       <PayoutSupportBanner />
 
-      {/* Navbar BELOW banner */}
       <motion.nav
         initial={{ y: 0 }}
         animate={{ y: direction === "down" && !atTop ? -100 : 0 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className={`w-full transition-all duration-300 ${
           atTop
-            ? "bg-background/60 backdrop-blur-xl border-b border-border/0"
-            : "bg-background/80 backdrop-blur-2xl border-b border-border/50 shadow-lg shadow-black/20"
+            ? "bg-background/85 backdrop-blur-xl border-b border-border/60"
+            : "bg-background/95 backdrop-blur-2xl border-b border-primary/30 shadow-[0_1px_0_hsl(var(--primary)/0.15),0_8px_24px_-12px_hsl(38_40%_50%/0.15)]"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            {/* Left: Back button (sub-pages) + Logo */}
+          <div className="flex items-center justify-between h-[68px]">
+            {/* Left */}
             <div className="flex items-center gap-2 min-w-0 shrink-0">
               {isSubPage && (
                 <Button
                   variant="ghost"
                   size="icon"
                   onClick={() => navigate(-1)}
-                  className="text-muted-foreground hover:text-foreground h-8 w-8 shrink-0"
+                  className="text-muted-foreground hover:text-foreground hover:bg-muted h-8 w-8 shrink-0"
                   aria-label="Go back"
                 >
                   <ArrowLeft className="h-4 w-4" />
                 </Button>
               )}
-              <Link to="/" className="text-lg md:text-xl font-bold font-heading gradient-text-primary hover:opacity-80 transition-opacity whitespace-nowrap">
-                PropFirm Knowledge
+              <Link to="/" aria-label="PropFirm Knowledge home">
+                <Logo size={34} />
               </Link>
               {isAdmin && (
-                <span className="hidden md:inline-flex ml-2 text-[10px] px-2 py-0.5 rounded-full bg-primary/15 text-primary border border-primary/30 font-medium animate-glow-pulse">
+                <span className="hidden md:inline-flex ml-3 text-[10px] px-2 py-0.5 rounded-full bg-primary/15 text-primary-deep border border-primary/40 font-semibold uppercase tracking-wider">
                   Admin
                 </span>
               )}
             </div>
 
-            {/* Center: Nav links */}
-            <div className="hidden md:flex items-center gap-1">
+            {/* Center */}
+            <div className="hidden lg:flex items-center gap-0.5">
               {navLinks.map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}
-                  className="relative px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
+                  className={`relative px-4 py-2 text-[13px] font-medium tracking-wide transition-colors whitespace-nowrap ${
+                    isActive(link.to) ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                  }`}
                 >
                   {link.label}
                   {isActive(link.to) && (
                     <motion.div
                       layoutId="nav-underline"
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full"
+                      className="absolute -bottom-0.5 left-3 right-3 h-px bg-gradient-to-r from-transparent via-primary to-transparent"
                       transition={{ type: "spring", stiffness: 300, damping: 30 }}
                     />
                   )}
                 </Link>
               ))}
-              <Link
-                to="/table-review"
-                className="relative px-3 py-2 text-sm font-semibold whitespace-nowrap"
-              >
-                <span className="relative z-10 gradient-text-primary">✨ Table Review</span>
-                {isActive("/table-review") && (
-                  <motion.div
-                    layoutId="nav-underline"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full"
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  />
-                )}
-              </Link>
             </div>
 
-            {/* Right: Auth actions */}
+            {/* Right */}
             <div className="hidden md:flex items-center gap-2 shrink-0">
               {isAdmin && (
                 <Link to="/admin-dashboard-2024">
-                  <Button size="sm" className="bg-primary/20 text-primary hover:bg-primary/30 border border-primary/30 font-medium text-xs">
-                    <Shield className="h-3.5 w-3.5 mr-1.5" />
+                  <Button size="sm" variant="outline" className="border-primary/40 text-foreground hover:bg-primary/10 text-xs font-semibold">
+                    <Shield className="h-3.5 w-3.5 mr-1.5 text-primary" />
                     Admin
                   </Button>
                 </Link>
@@ -130,33 +119,33 @@ const Navbar = ({ isAdminMode, setIsAdminMode }: NavbarProps) => {
               {!user ? (
                 <>
                   <Link to="/login">
-                    <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground text-sm">
-                      Login
+                    <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground hover:bg-muted text-[13px]">
+                      Log in
                     </Button>
                   </Link>
                   <Link to="/signup">
-                    <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm font-medium">
-                      Sign Up
+                    <Button size="sm" className="btn-gold text-[13px] font-semibold px-5 rounded-lg">
+                      Get Started
                     </Button>
                   </Link>
                 </>
               ) : (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
+                    <Button variant="ghost" size="sm" className="text-foreground hover:bg-muted">
                       <User className="h-4 w-4 mr-1.5" />
                       {user.email ? user.email.split("@")[0] : "Account"}
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="bg-card/95 backdrop-blur-xl border-border">
-                    <DropdownMenuLabel className="text-foreground">My Account</DropdownMenuLabel>
+                  <DropdownMenuContent align="end" className="bg-card/98 backdrop-blur-xl border-border shadow-lg">
+                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onClick={() => navigate("/reviews")}>My Reviews</DropdownMenuItem>
                     {isAdmin && (
                       <>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem onClick={() => navigate("/admin-dashboard-2024")}>
-                          <Shield className="h-4 w-4 mr-2" />
+                          <Shield className="h-4 w-4 mr-2 text-primary" />
                           Admin Panel
                         </DropdownMenuItem>
                       </>
@@ -171,17 +160,21 @@ const Navbar = ({ isAdminMode, setIsAdminMode }: NavbarProps) => {
               )}
             </div>
 
-            {/* Mobile: burger */}
-            <div className="md:hidden flex items-center">
-              <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-foreground">
+            {/* Mobile burger */}
+            <div className="lg:hidden md:flex hidden items-center" />
+            <div className="lg:hidden flex items-center">
+              <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-foreground hover:bg-muted">
                 {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </Button>
             </div>
           </div>
         </div>
+
+        {/* Gold hairline */}
+        <div className="h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
       </motion.nav>
 
-      {/* Mobile slide-in menu - OUTSIDE nav, at root z-index */}
+      {/* Mobile menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <>
@@ -189,7 +182,7 @@ const Navbar = ({ isAdminMode, setIsAdminMode }: NavbarProps) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[998] md:hidden"
+              className="fixed inset-0 bg-foreground/30 backdrop-blur-sm z-[998] lg:hidden"
               onClick={() => setIsMobileMenuOpen(false)}
             />
             <motion.div
@@ -197,40 +190,36 @@ const Navbar = ({ isAdminMode, setIsAdminMode }: NavbarProps) => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 250 }}
-              className="fixed top-0 right-0 bottom-0 w-72 bg-card border-l border-border z-[999] md:hidden overflow-y-auto"
+              className="fixed top-0 right-0 bottom-0 w-80 bg-card border-l border-border z-[999] lg:hidden overflow-y-auto shadow-2xl"
             >
-              <div className="flex justify-end p-4">
+              <div className="flex justify-between items-center p-5 border-b border-border">
+                <Logo size={30} />
                 <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)} className="text-foreground">
                   <X className="h-5 w-5" />
                 </Button>
               </div>
-              <div className="px-4 space-y-1">
+              <div className="px-4 py-5 space-y-1">
                 {navLinks.map((link) => (
                   <Link
                     key={link.to}
                     to={link.to}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={`block px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                      isActive(link.to) ? "bg-primary/10 text-primary" : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                      isActive(link.to)
+                        ? "bg-primary/10 text-foreground border-l-2 border-primary"
+                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
                     }`}
                   >
                     {link.label}
                   </Link>
                 ))}
-                <Link
-                  to="/table-review"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block px-4 py-3 rounded-lg text-sm font-semibold gradient-text-primary"
-                >
-                  ✨ Table Review
-                </Link>
                 {isAdmin && (
                   <Link
                     to="/admin-dashboard-2024"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block px-4 py-3 rounded-lg text-sm font-medium text-primary hover:bg-primary/10"
+                    className="block px-4 py-3 rounded-lg text-sm font-medium text-foreground hover:bg-primary/10"
                   >
-                    <Shield className="inline h-4 w-4 mr-2" />
+                    <Shield className="inline h-4 w-4 mr-2 text-primary" />
                     Admin Dashboard
                   </Link>
                 )}
@@ -238,18 +227,18 @@ const Navbar = ({ isAdminMode, setIsAdminMode }: NavbarProps) => {
                 {!user ? (
                   <div className="grid grid-cols-2 gap-2">
                     <Link to="/login" onClick={() => setIsMobileMenuOpen(false)}>
-                      <Button variant="outline" className="w-full text-sm border-border">Login</Button>
+                      <Button variant="outline" className="w-full border-border">Log in</Button>
                     </Link>
                     <Link to="/signup" onClick={() => setIsMobileMenuOpen(false)}>
-                      <Button className="w-full text-sm bg-primary text-primary-foreground">Sign Up</Button>
+                      <Button className="w-full btn-gold font-semibold">Get Started</Button>
                     </Link>
                   </div>
                 ) : (
                   <div className="space-y-1">
-                    <Button variant="ghost" className="w-full justify-start text-sm text-muted-foreground" onClick={() => { navigate("/reviews"); setIsMobileMenuOpen(false); }}>
+                    <Button variant="ghost" className="w-full justify-start" onClick={() => { navigate("/reviews"); setIsMobileMenuOpen(false); }}>
                       My Reviews
                     </Button>
-                    <Button variant="ghost" className="w-full justify-start text-sm text-destructive" onClick={async () => { await handleLogout(); setIsMobileMenuOpen(false); }}>
+                    <Button variant="ghost" className="w-full justify-start text-destructive" onClick={async () => { await handleLogout(); setIsMobileMenuOpen(false); }}>
                       <LogOut className="h-4 w-4 mr-2" />Logout
                     </Button>
                   </div>
