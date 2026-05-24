@@ -340,3 +340,95 @@
   border: 2px solid hsl(var(--muted));
 }
 ::-webkit-scrollbar-thumb:hover { background: hsl(var(--primary) / 0.7); }
+
+/* ============================================
+   LEGACY DARK-THEME COMPATIBILITY LAYER
+   Re-maps old dark utilities → light luxury tokens
+   so legacy pages inherit the new brand instantly.
+   ============================================ */
+@layer utilities {
+  /* Backgrounds — dark slates/grays/blues → white surfaces */
+  .bg-slate-900, .bg-slate-950, .bg-gray-900, .bg-gray-950,
+  .bg-blue-950, .bg-blue-900 {
+    background-color: hsl(var(--background)) !important;
+  }
+  .bg-slate-800, .bg-gray-800, .bg-blue-800 {
+    background-color: hsl(var(--card)) !important;
+  }
+  .bg-slate-800\/50, .bg-slate-800\/40, .bg-slate-700\/50, .bg-slate-700\/40,
+  .bg-slate-900\/50, .bg-slate-900\/80, .bg-gray-800\/50, .bg-gray-900\/50 {
+    background-color: hsl(var(--muted) / 0.6) !important;
+  }
+  .bg-slate-700, .bg-gray-700 {
+    background-color: hsl(var(--muted)) !important;
+  }
+
+  /* Gradient backgrounds — dark → luxury */
+  [class*="from-slate-9"], [class*="from-slate-8"],
+  [class*="from-gray-9"], [class*="from-gray-8"],
+  [class*="from-blue-9"], [class*="from-blue-8"] {
+    --tw-gradient-from: hsl(var(--background)) var(--tw-gradient-from-position) !important;
+  }
+  [class*="via-slate-9"], [class*="via-slate-8"],
+  [class*="via-gray-9"], [class*="via-blue-9"] {
+    --tw-gradient-via: hsl(var(--card)) var(--tw-gradient-via-position) !important;
+  }
+  [class*="to-slate-9"], [class*="to-slate-8"],
+  [class*="to-gray-9"], [class*="to-blue-9"] {
+    --tw-gradient-to: hsl(var(--muted)) var(--tw-gradient-to-position) !important;
+  }
+
+  /* Text — white/light grays on dark → foreground/muted */
+  .text-white {
+    color: hsl(var(--foreground)) !important;
+  }
+  .text-gray-100, .text-gray-200, .text-slate-100, .text-slate-200 {
+    color: hsl(var(--foreground)) !important;
+  }
+  .text-gray-300, .text-gray-400, .text-slate-300, .text-slate-400 {
+    color: hsl(var(--muted-foreground)) !important;
+  }
+  .text-gray-500, .text-slate-500 {
+    color: hsl(var(--muted-foreground)) !important;
+  }
+
+  /* Blue accents → gold primary */
+  .text-blue-400, .text-blue-300, .text-blue-500 {
+    color: hsl(var(--primary)) !important;
+  }
+  .bg-blue-600, .bg-blue-500, .bg-blue-700 {
+    background-color: hsl(var(--primary)) !important;
+    color: hsl(var(--primary-foreground)) !important;
+  }
+  .hover\:bg-blue-700:hover, .hover\:bg-blue-600:hover {
+    background-color: hsl(var(--primary-deep)) !important;
+  }
+  .hover\:text-blue-300:hover, .hover\:text-blue-400:hover {
+    color: hsl(var(--primary-deep)) !important;
+  }
+  .border-blue-500, .border-blue-500\/20, .border-blue-500\/30,
+  .border-blue-600, .border-blue-400 {
+    border-color: hsl(var(--primary) / 0.3) !important;
+  }
+
+  /* Purple accents → gold */
+  .text-purple-400, .text-purple-300, .text-purple-500 {
+    color: hsl(var(--primary)) !important;
+  }
+  .bg-purple-600, .bg-purple-500 {
+    background-color: hsl(var(--primary)) !important;
+  }
+
+  /* Generic dark borders → soft gold-tinted border */
+  .border-slate-700, .border-slate-800, .border-gray-700, .border-gray-800,
+  .border-slate-700\/50, .border-slate-800\/50 {
+    border-color: hsl(var(--border)) !important;
+  }
+
+  /* Inputs / placeholders inside legacy dark cards */
+  .placeholder\:text-gray-400::placeholder,
+  .placeholder\:text-slate-400::placeholder,
+  .placeholder\:text-gray-500::placeholder {
+    color: hsl(var(--muted-foreground)) !important;
+  }
+}
