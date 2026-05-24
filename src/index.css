@@ -344,91 +344,140 @@
 /* ============================================
    LEGACY DARK-THEME COMPATIBILITY LAYER
    Re-maps old dark utilities → light luxury tokens
-   so legacy pages inherit the new brand instantly.
    ============================================ */
 @layer utilities {
-  /* Backgrounds — dark slates/grays/blues → white surfaces */
+  /* Solid dark surfaces → white/luxury */
   .bg-slate-900, .bg-slate-950, .bg-gray-900, .bg-gray-950,
-  .bg-blue-950, .bg-blue-900 {
+  .bg-blue-950, .bg-blue-900, .bg-indigo-900, .bg-indigo-950,
+  .bg-zinc-900, .bg-zinc-950, .bg-neutral-900, .bg-neutral-950 {
     background-color: hsl(var(--background)) !important;
   }
-  .bg-slate-800, .bg-gray-800, .bg-blue-800 {
+  .bg-slate-800, .bg-gray-800, .bg-blue-800, .bg-zinc-800 {
     background-color: hsl(var(--card)) !important;
   }
-  .bg-slate-800\/50, .bg-slate-800\/40, .bg-slate-700\/50, .bg-slate-700\/40,
-  .bg-slate-900\/50, .bg-slate-900\/80, .bg-gray-800\/50, .bg-gray-900\/50 {
-    background-color: hsl(var(--muted) / 0.6) !important;
+  [class*="bg-slate-800/"], [class*="bg-slate-900/"], [class*="bg-slate-700/"],
+  [class*="bg-gray-800/"], [class*="bg-gray-900/"], [class*="bg-gray-700/"],
+  [class*="bg-blue-900/"], [class*="bg-blue-800/"] {
+    background-color: hsl(var(--muted) / 0.5) !important;
   }
-  .bg-slate-700, .bg-gray-700 {
+  .bg-slate-700, .bg-gray-700, .bg-slate-600, .bg-gray-600 {
     background-color: hsl(var(--muted)) !important;
   }
 
-  /* Gradient backgrounds — dark → luxury */
-  [class*="from-slate-9"], [class*="from-slate-8"],
-  [class*="from-gray-9"], [class*="from-gray-8"],
-  [class*="from-blue-9"], [class*="from-blue-8"] {
-    --tw-gradient-from: hsl(var(--background)) var(--tw-gradient-from-position) !important;
-  }
-  [class*="via-slate-9"], [class*="via-slate-8"],
-  [class*="via-gray-9"], [class*="via-blue-9"] {
-    --tw-gradient-via: hsl(var(--card)) var(--tw-gradient-via-position) !important;
-  }
-  [class*="to-slate-9"], [class*="to-slate-8"],
-  [class*="to-gray-9"], [class*="to-blue-9"] {
-    --tw-gradient-to: hsl(var(--muted)) var(--tw-gradient-to-position) !important;
+  /* Kill dark gradients entirely → luxury background */
+  [class*="bg-gradient"][class*="from-slate-9"],
+  [class*="bg-gradient"][class*="from-slate-8"],
+  [class*="bg-gradient"][class*="from-gray-9"],
+  [class*="bg-gradient"][class*="from-blue-9"],
+  [class*="bg-gradient"][class*="from-indigo-9"],
+  [class*="bg-gradient"][class*="from-zinc-9"] {
+    background: radial-gradient(ellipse 80% 50% at 50% 0%, hsl(38 60% 95% / 0.7), transparent 60%),
+                radial-gradient(ellipse 60% 40% at 100% 100%, hsl(38 50% 92% / 0.5), transparent 50%),
+                hsl(var(--background)) !important;
   }
 
-  /* Text — white/light grays on dark → foreground/muted */
-  .text-white {
+  /* Light text → dark foreground for contrast on white */
+  .text-white, .text-gray-50, .text-gray-100, .text-gray-200,
+  .text-slate-50, .text-slate-100, .text-slate-200, .text-zinc-100 {
     color: hsl(var(--foreground)) !important;
   }
-  .text-gray-100, .text-gray-200, .text-slate-100, .text-slate-200 {
-    color: hsl(var(--foreground)) !important;
-  }
-  .text-gray-300, .text-gray-400, .text-slate-300, .text-slate-400 {
-    color: hsl(var(--muted-foreground)) !important;
-  }
-  .text-gray-500, .text-slate-500 {
+  .text-gray-300, .text-gray-400, .text-slate-300, .text-slate-400,
+  .text-zinc-300, .text-zinc-400,
+  .text-gray-500, .text-slate-500, .text-zinc-500 {
     color: hsl(var(--muted-foreground)) !important;
   }
 
-  /* Blue accents → gold primary */
-  .text-blue-400, .text-blue-300, .text-blue-500 {
-    color: hsl(var(--primary)) !important;
+  /* Pale accents on white → readable deep-gold / semantic */
+  .text-blue-400, .text-blue-300, .text-blue-500, .text-blue-600,
+  .text-indigo-400, .text-indigo-500,
+  .text-purple-400, .text-purple-300, .text-purple-500, .text-purple-600,
+  .text-cyan-400, .text-cyan-500 {
+    color: hsl(var(--primary-deep)) !important;
   }
-  .bg-blue-600, .bg-blue-500, .bg-blue-700 {
+  .text-yellow-400, .text-yellow-500, .text-amber-400, .text-amber-500 {
+    color: hsl(var(--primary-deep)) !important;
+  }
+  .fill-yellow-400, .fill-yellow-500, .fill-amber-400 {
+    fill: hsl(var(--primary)) !important;
+  }
+  .text-green-400, .text-green-500, .text-emerald-400, .text-emerald-500 {
+    color: hsl(var(--success)) !important;
+  }
+  .text-red-400, .text-red-500, .text-rose-400, .text-rose-500 {
+    color: hsl(var(--destructive)) !important;
+  }
+
+  /* Solid colored buttons → gold */
+  .bg-blue-600, .bg-blue-500, .bg-blue-700,
+  .bg-indigo-600, .bg-indigo-500,
+  .bg-purple-600, .bg-purple-500, .bg-purple-700 {
     background-color: hsl(var(--primary)) !important;
     color: hsl(var(--primary-foreground)) !important;
   }
-  .hover\:bg-blue-700:hover, .hover\:bg-blue-600:hover {
+  .hover\:bg-blue-700:hover, .hover\:bg-blue-600:hover,
+  .hover\:bg-purple-700:hover, .hover\:bg-indigo-700:hover {
     background-color: hsl(var(--primary-deep)) !important;
   }
-  .hover\:text-blue-300:hover, .hover\:text-blue-400:hover {
-    color: hsl(var(--primary-deep)) !important;
-  }
-  .border-blue-500, .border-blue-500\/20, .border-blue-500\/30,
-  .border-blue-600, .border-blue-400 {
-    border-color: hsl(var(--primary) / 0.3) !important;
-  }
-
-  /* Purple accents → gold */
-  .text-purple-400, .text-purple-300, .text-purple-500 {
+  .hover\:text-blue-300:hover, .hover\:text-blue-400:hover,
+  .hover\:text-purple-300:hover {
     color: hsl(var(--primary)) !important;
   }
-  .bg-purple-600, .bg-purple-500 {
-    background-color: hsl(var(--primary)) !important;
+
+  /* Green CTAs stay green (success) */
+  .bg-green-600, .bg-green-500, .bg-emerald-600 {
+    background-color: hsl(var(--success)) !important;
+    color: hsl(var(--success-foreground)) !important;
+  }
+  .hover\:bg-green-700:hover, .hover\:bg-emerald-700:hover {
+    background-color: hsl(152 55% 30%) !important;
   }
 
-  /* Generic dark borders → soft gold-tinted border */
-  .border-slate-700, .border-slate-800, .border-gray-700, .border-gray-800,
-  .border-slate-700\/50, .border-slate-800\/50 {
+  /* Translucent colored chips → gold tint */
+  [class*="bg-blue-500/"], [class*="bg-blue-400/"], [class*="bg-blue-600/"],
+  [class*="bg-indigo-500/"], [class*="bg-purple-500/"], [class*="bg-purple-400/"],
+  [class*="bg-yellow-500/"], [class*="bg-amber-500/"] {
+    background-color: hsl(var(--primary) / 0.15) !important;
+  }
+  [class*="bg-red-500/"], [class*="bg-rose-500/"] {
+    background-color: hsl(var(--destructive) / 0.12) !important;
+  }
+  [class*="bg-green-500/"], [class*="bg-emerald-500/"] {
+    background-color: hsl(var(--success) / 0.15) !important;
+  }
+
+  /* Borders */
+  [class*="border-slate-7"], [class*="border-slate-8"], [class*="border-slate-6"],
+  [class*="border-gray-7"], [class*="border-gray-8"], [class*="border-gray-6"],
+  [class*="border-zinc-7"], [class*="border-zinc-8"] {
     border-color: hsl(var(--border)) !important;
   }
+  [class*="border-blue-5"], [class*="border-blue-4"], [class*="border-blue-6"],
+  [class*="border-purple-5"], [class*="border-indigo-5"],
+  [class*="border-yellow-5"], [class*="border-amber-5"] {
+    border-color: hsl(var(--primary) / 0.4) !important;
+  }
+  [class*="border-green-5"], [class*="border-emerald-5"] {
+    border-color: hsl(var(--success) / 0.4) !important;
+  }
+  [class*="border-red-5"], [class*="border-rose-5"] {
+    border-color: hsl(var(--destructive) / 0.4) !important;
+  }
+  [class*="hover:border-blue-5"]:hover, [class*="hover:border-purple-5"]:hover,
+  [class*="hover:border-indigo-5"]:hover, [class*="hover:border-yellow-5"]:hover,
+  [class*="hover:border-green-5"]:hover {
+    border-color: hsl(var(--primary) / 0.6) !important;
+  }
 
-  /* Inputs / placeholders inside legacy dark cards */
+  /* Placeholders */
   .placeholder\:text-gray-400::placeholder,
   .placeholder\:text-slate-400::placeholder,
-  .placeholder\:text-gray-500::placeholder {
+  .placeholder\:text-gray-500::placeholder,
+  .placeholder\:text-slate-500::placeholder {
     color: hsl(var(--muted-foreground)) !important;
+  }
+
+  /* Soften modal overlays */
+  .bg-black\/70, .bg-black\/80, .bg-black\/90, .bg-black\/60 {
+    background-color: hsl(var(--foreground) / 0.4) !important;
   }
 }
