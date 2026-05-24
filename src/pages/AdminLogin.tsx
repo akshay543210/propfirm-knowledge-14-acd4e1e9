@@ -58,7 +58,7 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center justify-center px-4">
+    <div className="min-h-screen luxury-bg flex items-center justify-center px-4">
       <Card className="w-full max-w-md bg-slate-800/50 border-blue-500/20">
         <CardHeader>
           <div className="text-center">

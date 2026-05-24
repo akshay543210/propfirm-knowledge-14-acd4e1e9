@@ -155,7 +155,7 @@ const ResetPassword = () => {
 
   if (isValidToken === null) {
     return (
-      <div className={`min-h-screen flex items-center justify-center px-4 transition-colors duration-300 ${darkMode ? 'bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900' : 'bg-gradient-to-br from-blue-50 to-indigo-100'}`}>
+      <div className={`min-h-screen flex items-center justify-center px-4 transition-colors duration-300 ${darkMode ? 'luxury-bg' : 'bg-gradient-to-br from-blue-50 to-indigo-100'}`}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -210,7 +210,7 @@ const ResetPassword = () => {
 
   if (!isValidToken) {
     return (
-      <div className={`min-h-screen flex items-center justify-center px-4 transition-colors duration-300 ${darkMode ? 'bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900' : 'bg-gradient-to-br from-blue-50 to-indigo-100'}`}>
+      <div className={`min-h-screen flex items-center justify-center px-4 transition-colors duration-300 ${darkMode ? 'luxury-bg' : 'bg-gradient-to-br from-blue-50 to-indigo-100'}`}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -280,7 +280,7 @@ const ResetPassword = () => {
   }
 
   return (
-    <div className={`min-h-screen flex items-center justify-center px-4 transition-colors duration-300 ${darkMode ? 'bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900' : 'bg-gradient-to-br from-blue-50 to-indigo-100'}`}>
+    <div className={`min-h-screen flex items-center justify-center px-4 transition-colors duration-300 ${darkMode ? 'luxury-bg' : 'bg-gradient-to-br from-blue-50 to-indigo-100'}`}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

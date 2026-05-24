@@ -74,7 +74,7 @@ const PropFirmDetail = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+      <div className="min-h-screen luxury-bg">
         <Navbar isAdminMode={isAdminMode} setIsAdminMode={setIsAdminMode} />
         <div className="container mx-auto px-4 pt-56 sm:pt-36 py-12">
           <div className="text-center text-white">Loading firm details...</div>
@@ -86,7 +86,7 @@ const PropFirmDetail = () => {
 
   if (!firm) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+      <div className="min-h-screen luxury-bg">
         <Navbar isAdminMode={isAdminMode} setIsAdminMode={setIsAdminMode} />
         <div className="container mx-auto px-4 pt-56 sm:pt-36 py-12">
           <div className="text-center text-red-400">Firm not found</div>
@@ -99,7 +99,7 @@ const PropFirmDetail = () => {
   const discountPercentage = Math.round(((firm.original_price - firm.price) / firm.original_price) * 100);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+    <div className="min-h-screen luxury-bg">
       <Navbar isAdminMode={isAdminMode} setIsAdminMode={setIsAdminMode} />
       
       <div className="container mx-auto px-4 pt-56 sm:pt-36 py-12">
