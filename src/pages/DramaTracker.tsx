@@ -61,7 +61,7 @@ const DramaTracker = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+      <div className="min-h-screen luxury-bg">
         <Navbar isAdminMode={false} setIsAdminMode={() => {}} />
         <div className="container mx-auto px-4 pt-56 sm:pt-36 py-20">
           <div className="flex items-center justify-center py-20">
@@ -76,7 +76,7 @@ const DramaTracker = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+      <div className="min-h-screen luxury-bg">
         <Navbar isAdminMode={false} setIsAdminMode={() => {}} />
         <div className="container mx-auto px-4 pt-56 sm:pt-36 py-20">
           <div className="text-center py-20">
@@ -91,7 +91,7 @@ const DramaTracker = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+    <div className="min-h-screen luxury-bg">
       <Navbar isAdminMode={false} setIsAdminMode={() => {}} />
       
       <div className="container mx-auto px-4 pt-56 sm:pt-36 py-20">

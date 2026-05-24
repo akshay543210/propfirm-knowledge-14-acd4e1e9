@@ -27,7 +27,7 @@ const AdminDashboard = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center justify-center">
+      <div className="min-h-screen luxury-bg flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-400 mx-auto mb-4"></div>
           <div className="text-white text-lg">Loading admin panel...</div>
@@ -39,7 +39,7 @@ const AdminDashboard = () => {
 
   if (!user || !isAdmin) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center justify-center">
+      <div className="min-h-screen luxury-bg flex items-center justify-center">
         <div className="text-center">
           <div className="text-red-400 text-xl mb-4">Access Denied</div>
           <div className="text-gray-300 mb-4">You don't have admin privileges</div>
@@ -52,7 +52,7 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+    <div className="min-h-screen luxury-bg">
       {/* Admin Banner */}
       <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
