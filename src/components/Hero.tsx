@@ -112,7 +112,7 @@ const Hero = ({ propFirms, onSearchResults }: HeroProps) => {
           variants={containerVariants}
         >
           {[
-            { end: 15000, suffix: "+", label: "Active Traders", sub: "Funded worldwide" },
+            { end: 20000, suffix: "+", label: "Active Traders", sub: "Funded worldwide" },
             { end: 2.5, suffix: "B", prefix: "$", decimals: 1, label: "Capital Deployed", sub: "Total funding allocated" },
             { end: 87, suffix: "%", label: "Success Rate", sub: "Traders reaching payout" },
           ].map((stat, i) => (
