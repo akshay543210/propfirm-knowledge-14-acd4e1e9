@@ -43,7 +43,7 @@ async function fetchSlugs() {
       console.warn('[sitemap] Supabase fetch failed:', res.status);
       return [];
     }
-    return (await res.json()) as Array<{ slug: string; updated_at: string | null }>;
+    return await res.json();
   } catch (e) {
     console.warn('[sitemap] error fetching firms:', e);
     return [];
