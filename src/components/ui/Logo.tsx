@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import logoAsset from "@/assets/propfirm-knowledge-logo.jpg.asset.json";
+import logoImg from "@/assets/propfirm-knowledge-logo.jpg";
 
 interface LogoProps {
   className?: string;
@@ -15,7 +15,7 @@ export const Logo = ({ className = "", size = 36, showWordmark = true }: LogoPro
   return (
     <div className={`inline-flex items-center gap-2.5 group ${className}`}>
       <motion.img
-        src={logoAsset.url}
+        src={logoImg}
         alt="PropFirm Knowledge"
         width={size}
         height={size}
