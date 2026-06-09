@@ -20,8 +20,8 @@ const PayoutSupportBanner = () => {
               <div className="flex items-center gap-2 text-center sm:text-left">
                 <ShieldCheck className="h-4 w-4 text-primary shrink-0" />
                 <span>
-                  <span className="font-semibold tracking-wide">Trade With Confidence.</span>
-                  <span className="opacity-80 ml-1.5 hidden sm:inline">Institutional-grade payout protection from our Payout Cases team.</span>
+                  <span className="font-semibold tracking-wide">Trade With Confidence!</span>
+                  <span className="opacity-80 ml-1.5 hidden sm:inline">If your payout ever gets rejected, we've got your back. Buy accounts using our code & get support from the Payout Cases team.</span>
                 </span>
               </div>
               <div className="flex items-center gap-3">
