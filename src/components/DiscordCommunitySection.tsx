@@ -72,10 +72,11 @@ const DiscordCommunitySection = () => {
               {pills.map(({ icon: Icon, label }) => (
                 <div
                   key={label}
-                  className="flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-white text-sm font-medium"
+                  className="flex items-center gap-2.5 px-4 py-2.5 rounded-full border text-sm font-medium"
+                  style={{ backgroundColor: "#111827", borderColor: "rgba(255,255,255,0.1)", color: "#ffffff" }}
                 >
                   <Icon className="h-4 w-4" style={{ color: "#f59e0b" }} />
-                  <span>{label}</span>
+                  <span style={{ color: "#ffffff" }}>{label}</span>
                 </div>
               ))}
             </div>
@@ -94,7 +95,7 @@ const DiscordCommunitySection = () => {
                 Join the Community
               </motion.a>
               <p className="mt-3 text-xs text-white/50">
-                Free to join · 2,000+ traders
+                Free to join · 5,000+ traders
               </p>
             </div>
           </div>

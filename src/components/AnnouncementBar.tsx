@@ -2,9 +2,9 @@ const items = [
   "🔥 SuperFunded — Use code PKOFF for 21% off",
   "✅ Quant Tekel — Use code PKOFF for 50% off",
   "⚡ The5ers — No coupon available · Check latest deals",
-  "🏆 New firm review added: Aquorex — Read now",
   "⚠️ Hidden rule alert: FTMO trailing drawdown update",
   "💰 Payout proof: Trader received $4,200 from SuperFunded",
+  "📣 Join 5,000+ traders on our Discord community",
 ];
 
 const AnnouncementBar = () => {
