@@ -95,7 +95,7 @@ const DiscordCommunitySection = () => {
                 Join the Community
               </motion.a>
               <p className="mt-3 text-xs text-white/50">
-                Free to join · 2,000+ traders
+                Free to join · 5,000+ traders
               </p>
             </div>
           </div>
