@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PayoutSupportBanner from "@/components/PayoutSupportBanner";
+import AnnouncementBar from "@/components/AnnouncementBar";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import TradingLoader from "@/components/TradingLoader";
 import PixelTracker from "@/components/PixelTracker";
@@ -55,6 +56,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <AnnouncementBar />
             <PixelTracker />
             <Suspense fallback={<TradingLoader />}>
               <Routes>

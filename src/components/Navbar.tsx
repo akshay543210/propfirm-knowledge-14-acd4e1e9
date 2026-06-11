@@ -46,7 +46,7 @@ const Navbar = ({ isAdminMode, setIsAdminMode }: NavbarProps) => {
   const isSubPage = location.pathname !== "/";
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50">
+    <div className="fixed left-0 right-0 z-50" style={{ top: 36 }}>
       <PayoutSupportBanner />
 
       <motion.nav

@@ -1,9 +1,12 @@
 import { MessageCircle, Send, Youtube } from "lucide-react";
 import { Link } from "react-router-dom";
 import Logo from "@/components/ui/Logo";
+import DiscordCommunitySection from "@/components/DiscordCommunitySection";
 
 const Footer = () => {
   return (
+    <>
+    <DiscordCommunitySection />
     <footer className="relative bg-card border-t border-border overflow-hidden">
       {/* Gold hairline */}
       <div className="h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
@@ -97,6 +100,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
+    </>
   );
 };
 
