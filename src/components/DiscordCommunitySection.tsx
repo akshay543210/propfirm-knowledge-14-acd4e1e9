@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Radio, MessageSquare, ClipboardList, Trophy } from "lucide-react";
-import discordImg from "@/assets/discord-3d-gold.png.asset.json";
+import discordImg from "@/assets/discord-3d-gold.png";
 
 const pills = [
   { icon: Radio, label: "Prop Firm Alerts" },
@@ -41,7 +41,7 @@ const DiscordCommunitySection = () => {
                 aria-hidden
               />
               <motion.img
-                src={discordImg.url}
+                src={discordImg}
                 alt="Discord community"
                 loading="lazy"
                 initial={{ rotate: -5, y: 10, opacity: 0 }}
@@ -59,8 +59,8 @@ const DiscordCommunitySection = () => {
             <p className="text-[11px] font-semibold tracking-[0.25em] uppercase mb-4" style={{ color: "#c4b5fd" }}>
               Community
             </p>
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-white">
-              Join Our Traders Community on{" "}
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold leading-tight" style={{ color: "#ffffff" }}>
+              <span style={{ color: "#ffffff" }}>Join Our Traders Community on</span>{" "}
               <span style={{ color: "#f59e0b" }}>Discord</span>
             </h2>
             <p className="mt-5 text-white/70 text-base sm:text-lg leading-relaxed max-w-xl">
