@@ -56,6 +56,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <AnnouncementBar />
             <PixelTracker />
             <Suspense fallback={<TradingLoader />}>
               <Routes>
