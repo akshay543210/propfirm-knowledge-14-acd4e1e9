@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Radio, MessageSquare, ClipboardList, Trophy } from "lucide-react";
-import discordImg from "@/assets/discord-3d-gold.png.asset.json";
+import discordImg from "@/assets/discord-3d-gold.png";
 
 const pills = [
   { icon: Radio, label: "Prop Firm Alerts" },
