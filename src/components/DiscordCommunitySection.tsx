@@ -41,7 +41,7 @@ const DiscordCommunitySection = () => {
                 aria-hidden
               />
               <motion.img
-                src={discordImg.url}
+                src={discordImg}
                 alt="Discord community"
                 loading="lazy"
                 initial={{ rotate: -5, y: 10, opacity: 0 }}
